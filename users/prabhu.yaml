@@ -1,0 +1,10 @@
+apiVersion: example.io/v1alpha1
+kind: updatedbs
+metadata:
+  name: prabhu
+spec:
+  first_name: "Allamprabhu"
+  last_name: "Kamble"
+  city: "Bangalore"
+  country: "India"
+  pincode: 560008

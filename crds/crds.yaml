@@ -1,0 +1,59 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: updatedbs.example.io
+spec:
+  group: example.io
+  names:
+    kind: updatedbs
+    plural: updatedbs
+    singular: updatedb
+  scope: Namespaced
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                city:
+                  type: string
+                country:
+                  type: string
+                pincode:
+                  type: integer
+              required:
+                - first_name
+                - last_name
+                - city
+                - country
+                - pincode
+            status:
+              type: object
+              properties:
+                phase:
+                  type: string
+      additionalPrinterColumns:
+      - name: first_name
+        type: string
+        jsonPath: .spec.first_name
+      - name: last_name
+        type: string
+        jsonPath: .spec.last_name
+      - name: city
+        type: string
+        jsonPath: .spec.city
+      - name: country
+        type: string
+        jsonPath: .spec.country
+      - name: pincode
+        type: integer
+        jsonPath: .spec.pincode
