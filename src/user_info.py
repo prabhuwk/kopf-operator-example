@@ -11,14 +11,10 @@ engine = create_database_engine()
 
 
 def process_record(resource_name, spec):
-    record = {
-        "resource_name": resource_name,
-        "first_name": spec.get("first_name"),
-        "last_name": spec.get("last_name"),
-        "city": spec.get("city"),
-        "country": spec.get("country"),
-        "pincode": spec.get("pincode"),
-    }
+
+    record = {"resource_name": resource_name}
+    for key, value in spec.items():
+        record[key] = value
 
     record_exists = get_record_by_resource_name(
         engine=engine, resource_name=resource_name
